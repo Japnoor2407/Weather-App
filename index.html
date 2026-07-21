@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
+    <link rel="stylesheet" href="final.css">
 </head>
 
 <body>
@@ -13,13 +14,14 @@
         <header class="navbar">
 
             <div class="logo">
-                <img src="#" alt="logo">
-                <h1>SkyCast-</h1>
-                <span>weather at yoy glance</span>
+                <img src="images/logo.png" alt="logo">
+                <h1>SkyCast<span>weather at your glance</span></h1>
             </div>
 
             <div class="search-bar">
-                <input type="text" placeholder="Search for city...">
+                <input id="user-input" type="text" placeholder="Enter City...">
+                <button id="serch"><i class="fa-solid fa-magnifying-glass fa-xl"
+                    style="--fa-animation-iteration-count: 2"></i></button>
             </div>
 
             <button class="theme">Dark</button>
@@ -32,16 +34,17 @@
                 <div class="left">
 
                     <div class="loaction">
-                        <img src="#" alt="location icon">
-                        <h2>Jalandhar, India</h2>
+                        <i class="fa-solid fa-location-dot fa-bounce fa-2xl"
+                            style="--fa-animation-iteration-count: 1"></i>
+                        <h2 id="city">Jalandhar</h2>
                     </div>
 
-                    <div class="date">
-                        <p>18/07/2026</p>
-                    </div>
-
-                    <div class="time">
-                        <p>10:30 PM</p>
+                    <div class="today">
+                        <div class="date-row">
+                            <p id="day">Saturday,</p>
+                            <p id="date">18/07/2026</p>
+                        </div>
+                        <p id="time">10:30 PM</p>
                     </div>
 
                     <div class="weather-info">
@@ -62,28 +65,34 @@
                     <div class="additional-info">
 
                         <div class="high">
-                            <span>32°C</span>
-                            <h3>high</h3>
+                            <i class="fa-solid fa-arrow-up fa-xl"></i>
+                            <h3 id="high-temp">34°C</h3>
+                            <span>high</span>
                         </div>
                         <div class="low">
-                            <span>26°C</span>
-                            <h3>low</h3>
+                            <i class="fa-solid fa-arrow-down fa-xl"></i>
+                            <h3 id="low-temp">28°C</h3>
+                            <span>low</span>
                         </div>
                         <div class="wind">
+                            <i class="fa-solid fa-wind fa-xl"></i>
+                            <h3 id="wind-speed">12km/hr</h3>
                             <span>wind</span>
-                            <h3>12km/hr</h3>
                         </div>
                         <div class="humidity">
+                            <i class="fa-solid fa-droplet fa-xl"></i>
+                            <h3 id="humidity-content">61%</h3>
                             <span>humidity</span>
-                            <h3>61%</h3>
                         </div>
                         <div class="pressure">
+                            <i class="fa-solid fa-gauge-high fa-xl"></i>
+                            <h3 id="atm-pressure">1021hpa</h3>
                             <span>pressure</span>
-                            <h3>1021hpa</h3>
                         </div>
                         <div class="visibility">
+                            <i class="fa-regular fa-eye fa-xl"></i>
+                            <h3 id="visible-distance">10 mb</h3>
                             <span>visibility</span>
-                            <h3>10km</h3>
                         </div>
 
                     </div>
@@ -95,33 +104,28 @@
             <div class="other-stats">
 
                 <div class="sunrise">
-                    <img src="#" alt="sunrise">
+                    <img src="images/sunrise.png" alt="sunrise">
                     <h2>Sunrise</h2>
-                    <p>5:37 AM</p>
+                    <p id="sunrise-time">5:37 AM</p>
                 </div>
 
                 <div class="sunset">
-                    <img src="#" alt="sunset">
+                    <img src="images/sunset.png" alt="sunset">
                     <h2>Sunset</h2>
-                    <p>6:49 PM</p>
+                    <p id="sunset-time">6:49 PM</p>
                 </div>
 
-                <div class="UV">
-                    <img src="#" alt="UV-Index">
+                <div class="uv">
+                    <img src="images/uv-index.png" alt="UV-Index">
                     <h2>UV-Index</h2>
-                    <p>6 high</p>
-                </div>
-
-                <div class="moon">
-                    <img src="#" alt="moon-phase">
-                    <h2>Moon-Phase</h2>
-                    <p>waxing crescent</p>
+                    <p id="UV-value">6</p>
                 </div>
 
                 <div class="AQI">
-                    <img src="#" alt="aqi">
+                    <img src="images/aqi.png" alt="aqi">
                     <h2>AQI</h2>
-                    <p>160 Unhealthy</p>
+                    <p id="aqi-range">51-100</p>
+                    <p id="aqi-range">51-100</p>
                 </div>
 
             </div>
@@ -132,8 +136,8 @@
 
                 <div class="day1">
 
-                    <p>Sat</p>
-                    <p>19 Jul</p>
+                    <p>Sun</p>
+                    <p>20 Jul</p>
 
                     <img src="#" alt="forecast">
 
@@ -144,8 +148,8 @@
 
                 <div class="day2">
 
-                    <p>Sat</p>
-                    <p>19 Jul</p>
+                    <p>Mon</p>
+                    <p>21 Jul</p>
 
                     <img src="#" alt="forecast">
 
@@ -156,8 +160,8 @@
 
                 <div class="day3">
 
-                    <p>Sat</p>
-                    <p>19 Jul</p>
+                    <p>Tue</p>
+                    <p>22 Jul</p>
 
                     <img src="#" alt="forecast">
 
@@ -168,8 +172,8 @@
 
                 <div class="day4">
 
-                    <p>Sat</p>
-                    <p>19 Jul</p>
+                    <p>Wed</p>
+                    <p>23 Jul</p>
 
                     <img src="#" alt="forecast">
 
@@ -180,8 +184,8 @@
 
                 <div class="day5">
 
-                    <p>Sat</p>
-                    <p>19 Jul</p>
+                    <p>Thrus</p>
+                    <p>24 Jul</p>
 
                     <img src="#" alt="forecast">
 
@@ -192,8 +196,8 @@
 
                 <div class="day6">
 
-                    <p>Sat</p>
-                    <p>19 Jul</p>
+                    <p>Fri</p>
+                    <p>25 Jul</p>
 
                     <img src="#" alt="forecast">
 
@@ -205,19 +209,7 @@
                 <div class="day7">
 
                     <p>Sat</p>
-                    <p>19 Jul</p>
-
-                    <img src="#" alt="forecast">
-
-                    <p>32°C</p>
-                    <p>28°C</p>
-
-                </div>
-
-                <div class="day1">
-
-                    <p>Sat</p>
-                    <p>19 Jul</p>
+                    <p>26 Jul</p>
 
                     <img src="#" alt="forecast">
 
