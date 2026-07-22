@@ -4,7 +4,7 @@ const base_url = "https://api.weatherapi.com/v1/forecast.json?";
 
 // navbar
 const userInput = document.querySelector("#user-input");
-const searchbtn = document.querySelector("#serch");
+const searchBtn = document.querySelector("#serch-btn");
 
 // main card
 // right
@@ -44,20 +44,30 @@ for (let i = 1; i <= 7; i++) {
     forecastMinTemps.push(document.querySelector(`#min${i}`));
 }
 
+//------------------------------------------Initial Page------------------------------------------
 
-// ------------------------------------Main JS---------------------------------------------
+window.addEventListener("DOMContentLoaded", () => {
+    getWeather("Chandigarh");
+});
 
-searchbtn.addEventListener("click", getWeather);
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        userInput.focus();
+    }, 1000);
+});
+
+//--------------------------------------------Main JS---------------------------------------------
+
+searchBtn.addEventListener("click", getWeather);
 userInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
         getWeather();
     }
 })
 
-async function getWeather() {
-    let cityName = userInput.value.trim();
+async function getWeather(cityName = userInput.value.trim()) {
 
-    if (cityName === "") {
+    if (!cityName) {
         alert("Please Enter City Name");
         return;
     }
@@ -104,7 +114,7 @@ changeMainCard = (data) => {
     currWeather(data);
 }
 
-function updateClock(data) {
+updateClock = (data) => {
     const cityTime = new Date(data.location.localtime); //Built in Date Object of JS
 
     day.innerText = cityTime.toLocaleDateString("en-US", {
@@ -131,7 +141,7 @@ currWeather = (data) => {
     currTemp.innerText = Math.round(hourlyTemp) + "°C"
 
     currText.innerText = hourlyData.condition.text;
-    feelsLike.innerText = `Feels like ${data.current.feelslike_c}`;
+    feelsLike.innerText = `Feels like ${Math.round(data.current.feelslike_c)}`;
     currentImg.src = "https:" + hourlyData.condition.icon;
     currentImg.alt = hourlyData.condition.text;
 }

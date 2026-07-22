@@ -346,24 +346,6 @@ input {
     padding-left: 12px;
 }
 
-/* Signature element: a barometer-dial ring behind the condition icon */
-/* .weather-info::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 118px;
-    height: 118px;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    background:
-        repeating-conic-gradient(var(--hairline-strong) 0deg 2.5deg,
-            transparent 2.5deg 30deg);
-    -webkit-mask: radial-gradient(circle, transparent 52%, #000 53%);
-    mask: radial-gradient(circle, transparent 52%, #000 53%);
-    pointer-events: none;
-} */
-
 .weather-info img {
     position: relative;
     z-index: 2;
