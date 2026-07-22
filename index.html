@@ -48,12 +48,12 @@
                     </div>
 
                     <div class="weather-info">
-                        <img src="#" alt="cloudy">
+                        <img src="#" alt="cloudy" id="current-img">
 
                         <div class="deatils">
-                            <p>28°C</p>
-                            <p>Partly Cloudy</p>
-                            <p>Feels line 31°C</p>
+                            <p id="current-temp">28°C</p>
+                            <p id="current-text">Partly Cloudy</p>
+                            <p id="feels-like">Feels like 31°C</p>
                         </div>
 
                     </div>
@@ -76,22 +76,22 @@
                         </div>
                         <div class="wind">
                             <i class="fa-solid fa-wind fa-xl"></i>
-                            <h3 id="wind-speed">12km/hr</h3>
+                            <h3 id="wind-speed">12 km/hr</h3>
                             <span>wind</span>
                         </div>
                         <div class="humidity">
                             <i class="fa-solid fa-droplet fa-xl"></i>
-                            <h3 id="humidity-content">61%</h3>
+                            <h3 id="humidity-content">61 %</h3>
                             <span>humidity</span>
                         </div>
                         <div class="pressure">
                             <i class="fa-solid fa-gauge-high fa-xl"></i>
-                            <h3 id="atm-pressure">1021hpa</h3>
+                            <h3 id="atm-pressure">1021 mb</h3>
                             <span>pressure</span>
                         </div>
                         <div class="visibility">
                             <i class="fa-regular fa-eye fa-xl"></i>
-                            <h3 id="visible-distance">10 mb</h3>
+                            <h3 id="visible-distance">10 km</h3>
                             <span>visibility</span>
                         </div>
 
@@ -116,15 +116,16 @@
                 </div>
 
                 <div class="uv">
-                    <img src="images/uv-index.png" alt="UV-Index">
+                    <img src="images/uv.svg" alt="UV-Index">
                     <h2>UV-Index</h2>
                     <p id="UV-value">6</p>
                 </div>
 
                 <div class="AQI">
-                    <img src="images/aqi.png" alt="aqi">
+                    <img src="images/aqi.svg" alt="aqi">
                     <h2>AQI</h2>
                     <p id="aqi-range">51-100</p>
+                    <p id="aqi-text">Moderate</p>
                 </div>
 
             </div>
@@ -135,85 +136,64 @@
 
                 <div class="day1">
 
-                    <p>Sun</p>
-                    <p>20 Jul</p>
-
-                    <img src="#" alt="forecast">
-
-                    <p>32°C</p>
-                    <p>28°C</p>
+                    <p id="day1">Sun</p>
+                    <p id="date1">20 Jul</p>
+                    <p id="max1">32°C</p>
+                    <p id="min1">28°C</p>
 
                 </div>
 
                 <div class="day2">
 
-                    <p>Mon</p>
-                    <p>21 Jul</p>
-
-                    <img src="#" alt="forecast">
-
-                    <p>32°C</p>
-                    <p>28°C</p>
+                    <p id="day2">Mon</p>
+                    <p id="date2">21 Jul</p>
+                    <p id="max2">32°C</p>
+                    <p id="min2">28°C</p>
 
                 </div>
 
                 <div class="day3">
 
-                    <p>Tue</p>
-                    <p>22 Jul</p>
-
-                    <img src="#" alt="forecast">
-
-                    <p>32°C</p>
-                    <p>28°C</p>
+                    <p id="day3">Tue</p>
+                    <p id="date3">22 Jul</p>
+                    <p id="max3">32°C</p>
+                    <p id="min3">28°C</p>
 
                 </div>
 
                 <div class="day4">
 
-                    <p>Wed</p>
-                    <p>23 Jul</p>
-
-                    <img src="#" alt="forecast">
-
-                    <p>32°C</p>
-                    <p>28°C</p>
+                    <p id="day4">Wed</p>
+                    <p id="date4">23 Jul</p>
+                    <p id="max4">32°C</p>
+                    <p id="min4">28°C</p>
 
                 </div>
 
                 <div class="day5">
 
-                    <p>Thrus</p>
-                    <p>24 Jul</p>
-
-                    <img src="#" alt="forecast">
-
-                    <p>32°C</p>
-                    <p>28°C</p>
+                    <p id="day5">Thr</p>
+                    <p id="date5">24 Jul</p>
+                    <p id="max5">32°C</p>
+                    <p id="min5">28°C</p>
 
                 </div>
 
                 <div class="day6">
 
-                    <p>Fri</p>
-                    <p>25 Jul</p>
-
-                    <img src="#" alt="forecast">
-
-                    <p>32°C</p>
-                    <p>28°C</p>
+                    <p id="day6">Fri</p>
+                    <p id="date6">25 Jul</p>
+                    <p id="max6">32°C</p>
+                    <p id="min6">28°C</p>
 
                 </div>
 
                 <div class="day7">
 
-                    <p>Sat</p>
-                    <p>26 Jul</p>
-
-                    <img src="#" alt="forecast">
-
-                    <p>32°C</p>
-                    <p>28°C</p>
+                    <p id="day7">Sat</p>
+                    <p id="date7">26 Jul</p>
+                    <p id="max7">32°C</p>
+                    <p id="min7">28°C</p>
 
                 </div>
 

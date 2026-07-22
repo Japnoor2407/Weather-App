@@ -11,8 +11,7 @@
 :root {
     /* color */
     --bg-deep: #131a3a;
-    --bg-panel: #1c2755;
-    --bg-panel-alt: #1b2450;
+    --bg-panel: #1b2450;
     --bg-chip: #171f45;
     --accent-cool: #8fa3ff;
     --icon: #0eb7af;
@@ -327,7 +326,6 @@ input {
 
 .date-row {
     display: flex;
-    gap: 3px;
 }
 
 .today p {
@@ -349,7 +347,7 @@ input {
 }
 
 /* Signature element: a barometer-dial ring behind the condition icon */
-.weather-info::before {
+/* .weather-info::before {
     content: '';
     position: absolute;
     left: 0;
@@ -364,7 +362,7 @@ input {
     -webkit-mask: radial-gradient(circle, transparent 52%, #000 53%);
     mask: radial-gradient(circle, transparent 52%, #000 53%);
     pointer-events: none;
-}
+} */
 
 .weather-info img {
     position: relative;
@@ -372,11 +370,6 @@ input {
     width: 92px;
     height: 92px;
     padding: 14px;
-    border-radius: 50%;
-    background:
-        radial-gradient(circle at 35% 30%, var(--accent-primary), transparent 65%),
-        var(--bg-panel-alt);
-    box-shadow: 0 0 0 1px var(--hairline), 0 12px 30px -12px var(--accent-shadow);
 }
 
 .deatils {
@@ -386,7 +379,6 @@ input {
 }
 
 .deatils p:first-child {
-    /* font-family: var(--font-display); */
     font-family: var(--font-number);
     font-weight: 600;
     font-size: 3rem;
@@ -500,7 +492,7 @@ input {
     flex: 1 1 200px;
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto auto;
     align-items: center;
     column-gap: 16px;
     row-gap: 2px;
@@ -517,6 +509,32 @@ input {
     width: 75px;
     height: 75px;
     object-fit: contain;
+}
+
+.AQI {
+    grid-template-rows: auto auto auto;
+}
+
+.AQI img {
+    grid-row: 1 / 4;
+}
+
+#aqi-range {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 1.35rem;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+#aqi-text {
+    grid-column: 2;
+    grid-row: 3;
+    font-family: var(--font-mono);
+    letter-spacing: 0.15rem;
+    font-size: 1.2rem;
+    color: var(--text-quaternary);
+    margin-top: 2px;
 }
 
 .other-stats h2 {
@@ -537,85 +555,78 @@ input {
     font-family: var(--font-number);
     font-weight: 500;
     font-size: 1.37rem;
-    /* padding-bottom: 3px; */
-}
-
-.AQI p {
-    color: var(--accent-warm);
 }
 
 /* ---------------------------------- Forecast ---------------------------------- */
 .forecast {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-evenly;
 
+}
+ 
 .forecast h1 {
-    flex: 1 1 100%;
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 12px;
+  flex: 1 1 100%;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
 }
-
-.forecast>div {
-    display: flex;
-    flex: 1 1 120px;
-    justify-content: space-around;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-    text-align: center;
-    background: var(--bg-panel);
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius-md);
-    padding: 18px;
-    transition: transform 0.2s var(--ease), border-color 0.2s var(--ease);
+ 
+.forecast > div {
+  display: flex;
+  flex: 1 1 118px;
+  max-width: 140px;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  background: var(--bg-panel);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  padding: 22px 14px 20px;
+  transition: transform 0.2s var(--ease), border-color 0.2s var(--ease);
 }
-
-.forecast>div:hover {
-    transform: translateY(-4px);
-    border-color: var(--hairline-strong);
+ 
+.forecast > div:hover {
+  transform: translateY(-4px);
+  border-color: var(--hairline-strong);
 }
-
-.forecast>div p:first-child {
-    font-family: var(--font-mono);
-    font-size: 1.2 rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-quaternary);
+ 
+.forecast > div p:nth-child(1) {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  /* color: var(--accent-primary); */
 }
-
-.forecast>div p:nth-child(2) {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: var(--text-quaternary);
-    margin-bottom: 4px;
+ 
+.forecast > div p:nth-child(2) {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--text-quaternary);
 }
-
-.forecast>div img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin: 4px 0;
+ 
+/* a hairline divider takes over the icon's old job of separating the
+   day/date group from the temperature group */
+.forecast > div p:nth-child(3) {
+  width: 100%;
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--hairline);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  color: var(--accent-warm);
 }
-
-.forecast>div p:nth-child(4) {
-    font-family: var(--font-display);
-    font-weight: 600;
-    font-size: 1.05rem;
-    color: var(--accent-warm);
-}
-
-.forecast>div p:nth-child(5) {
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-tertiary);
-    color: var(--accent-cool);
+ 
+.forecast > div p:nth-of-type(4) {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--accent-cool);
 }
 
 /* ---------------------------------- Responsive ---------------------------------- */
