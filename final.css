@@ -354,25 +354,25 @@ input {
     padding: 14px;
 }
 
-.deatils {
+.details {
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
 
-.deatils p:first-child {
+.details p:first-child {
     font-family: var(--font-number);
     font-weight: 600;
     font-size: 3rem;
     line-height: 1;
 }
 
-.deatils p:nth-child(2) {
+.details p:nth-child(2) {
     font-size: 1.75rem;
     color: var(--text-secondary);
 }
 
-.deatils p:nth-child(3) {
+.details p:nth-child(3) {
     font-family: var(--font-mono);
     font-size: 1rem;
     color: var(--text-secondary);
