@@ -23,7 +23,7 @@ const lowTemp = document.querySelector("#low-temp");
 const windSpeed = document.querySelector("#wind-speed");
 const humidityContent = document.querySelector("#humidity-content");
 const atmPressure = document.querySelector("#atm-pressure");
-const VisibleDistance = document.querySelector("#visible-distance");
+const visibleDistance = document.querySelector("#visible-distance");
 
 // other-stats stip
 const sunriseTime = document.querySelector("#sunrise-time");
@@ -128,7 +128,7 @@ changeMainCardDetails = (data) => {
     windSpeed.innerHTML = Math.round(data.current.wind_kph) + " km/h";
     humidityContent.innerHTML = data.current.humidity + " %";
     atmPressure.innerHTML = data.current.pressure_mb + " mb";
-    VisibleDistance.innerText = data.current.vis_km + " km";
+    visibleDistance.innerText = data.current.vis_km + " km";
 }
 
 //----------------------------------------Main Card Left----------------------------------------
@@ -312,6 +312,6 @@ const weatherIcons = {
 
     hail: [1237, 1261, 1264],
 
-    thunderstrom: [1087, 1273, 1276, 1279, 1282],
+    thunderstrom: [1087, 1237, 1273, 1276, 1279, 1282],
 
 };
