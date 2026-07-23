@@ -114,7 +114,7 @@ async function getWeather(cityName = userInput.value.trim()) {
 
     catch (error) {
         console.error(error);
-        alert("Unable to featch Weather data.")
+        alert("Unable to fetch weather data.")
     }
 
 }
@@ -258,7 +258,7 @@ function updateForecastDay(data, index) {
     forecastMinTemps[index - 1].innerText = Math.round(forecast.day.mintemp_c) + "°C";
 }
 
-//--------------------------------------Miscleanenous--------------------------------------
+//--------------------------------------Miscellaneous--------------------------------------
 
 const aqiLevels = {
     1: {
@@ -315,6 +315,6 @@ const weatherIcons = {
 
     hail: [1237, 1261, 1264],
 
-    thunderstrom: [1087, 1237, 1273, 1276, 1279, 1282],
+    thunderstorm: [1087, 1237, 1273, 1276, 1279, 1282],
 
 };
