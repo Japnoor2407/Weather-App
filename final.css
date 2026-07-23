@@ -253,23 +253,76 @@ input {
     pointer-events: none;
 }
 
-.theme {
-    background: var(--bg-panel);
-    border: 3px solid var(--hairline);
-    color: var(--text-quaternary);
+ /*---------------------------------- Theme toggle --------------------------
+   A simple pill switch: a knob slides from left to right, swapping a
+   moon glyph for a sun glyph as it goes. Replaces the old plain "Dark"
+   text button. */
+.theme-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 76px;
+    height: 40px;
+    padding: 4px;
+    border: 2px solid var(--hairline);
     border-radius: 999px;
-    padding: 9px 20px;
-    font-size: 0.8rem;
-    font-family: var(--font-mono);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    background: var(--bg-chip);
     cursor: pointer;
-    transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+    flex-shrink: 0;
+    transition: background 0.4s var(--ease), border-color 0.25s var(--ease);
 }
-
-.theme:hover {
+ 
+.theme-toggle:hover {
     border-color: var(--hairline-strong);
-    color: var(--text-primary);
+}
+ 
+/* the sliding knob */
+.toggle-thumb {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at 32% 28%, #d9e0ff, var(--accent-cool) 72%);
+    box-shadow: 0 2px 6px var(--accent-shadow);
+    transform: translateX(0);
+    transition: transform 0.4s var(--ease), background 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+ 
+:root[data-theme="light"] .toggle-thumb {
+    transform: translateX(36px);
+    background: radial-gradient(circle at 32% 28%, #fff2d6, var(--accent-warm) 72%);
+}
+ 
+/* sun / moon glyphs stacked inside the knob; only one is visible at a time,
+   and they fade + scale into place as they cross over */
+.thumb-icon {
+    position: absolute;
+    font-size: 1.05rem;
+    color: #131a3a;
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+ 
+.thumb-icon--moon {
+    opacity: 1;
+    transform: scale(1);
+}
+ 
+.thumb-icon--sun {
+    opacity: 0;
+    transform: scale(0.4);
+}
+ 
+:root[data-theme="light"] .thumb-icon--moon {
+    opacity: 0;
+    transform: scale(0.4);
+}
+ 
+:root[data-theme="light"] .thumb-icon--sun {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* ---------------------------------- Main card ------------------------------ */

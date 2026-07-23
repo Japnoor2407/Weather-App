@@ -5,6 +5,7 @@ const base_url = "https://api.weatherapi.com/v1/forecast.json?";
 // navbar
 const userInput = document.querySelector("#user-input");
 const searchBtn = document.querySelector("#serch-btn");
+const themeToggle = document.querySelector(".theme-toggle");
 
 // main card
 // right
@@ -56,12 +57,26 @@ window.addEventListener("load", () => {
     }, 1000);
 });
 
+//--------------------------------------------Theme---------------------------------------------
+
+themeToggle.addEventListener("click", () => {
+    const html = document.documentElement;
+    const switchingToLight = html.getAttribute("data-theme") !== "light";
+
+    if (switchingToLight) {
+        html.setAttribute("data-theme", "light");
+    } else {
+        html.removeAttribute("data-theme");
+    }
+});
+
 //--------------------------------------------Main JS---------------------------------------------
 
-searchBtn.addEventListener("click", getWeather);
+searchBtn.addEventListener("click", () => getWeather());
 userInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {
         getWeather();
+
     }
 })
 
@@ -89,6 +104,8 @@ async function getWeather(cityName = userInput.value.trim()) {
         updateClock(data);
         updateCurrWeather(data);
         updateWeatherIcon(data);
+
+        userInput.value = "";
 
         for (let i = 1; i <= 7; i++) {
             updateForecastDay(data, i);
@@ -163,17 +180,23 @@ function getWeatherIcon(code, isDay) {
     if (weatherIcons.fog.includes(code))
         return "assets/icons/fog.svg";
 
+    if (weatherIcons.haze.includes(code))
+        return "assets/icons/haze.svg";
+
     if (weatherIcons.drizzle.includes(code))
         return "assets/icons/drizzle.svg";
 
     if (weatherIcons.rain.includes(code))
         return "assets/icons/rain.svg";
 
-    if (weatherIcons.heavyRain.includes(code))
-        return "assets/icons/heavy-rain.svg";
-
     if (weatherIcons.snow.includes(code))
         return "assets/icons/snow.svg";
+
+    if (weatherIcons.sleet.includes(code))
+        return "assets/icons/sleet.svg";
+
+    if (weatherIcons.hail.includes(code))
+        return "assets/icons/hail.svg";
 
     if (weatherIcons.thunderstorm.includes(code))
         return "assets/icons/thunderstorm.svg";
@@ -242,7 +265,7 @@ const aqiLevels = {
     },
     2: {
         text: "Moderate",
-        color: "#FFFF00",
+        color: "#d6d62c",
         range: "51 - 100"
     },
     3: {
@@ -277,7 +300,7 @@ const weatherIcons = {
 
     fog: [1030, 1135, 1147],
 
-    haze: [1036],
+    haze: [1012, 1036, 1015],
 
     drizzle: [1072, 1150, 1153, 1168, 1171],
 
@@ -289,6 +312,6 @@ const weatherIcons = {
 
     hail: [1237, 1261, 1264],
 
-    thunder: [1087, 1273, 1276, 1279, 1282],
+    thunderstrom: [1087, 1273, 1276, 1279, 1282],
 
 };
