@@ -205,7 +205,10 @@ function getWeatherIcon(code, isDay) {
 }
 
 async function updateWeatherIcon(data) {
-    const code = data.current.condition.code;
+
+    const currentHour = new Date(data.location.localtime).getHours();
+    const hourlyData = data.forecast.forecastday[0].hour[currentHour];
+    const code = hourlyData.condition.code;
     const isDay = data.current.is_day;
 
     const iconPath = getWeatherIcon(code, isDay);
