@@ -15,7 +15,7 @@ const time = document.querySelector("#time");
 const currTemp = document.querySelector("#current-temp");
 const currText = document.querySelector("#current-text");
 const feelsLike = document.querySelector("#feels-like");
-const currentImg = document.querySelector("#current-img");
+const weatherIconContainer = document.querySelector("#weather-icon-container");
 // left
 const highTemp = document.querySelector("#high-temp");
 const lowTemp = document.querySelector("#low-temp");
@@ -84,8 +84,11 @@ async function getWeather(cityName = userInput.value.trim()) {
             return;
         }
 
-        changeMainCard(data);
+        changeMainCardDetails(data);
         changeOtherStats(data);
+        updateClock(data);
+        updateCurrWeather(data);
+        updateWeatherIcon(data);
 
         for (let i = 1; i <= 7; i++) {
             updateForecastDay(data, i);
@@ -99,9 +102,9 @@ async function getWeather(cityName = userInput.value.trim()) {
 
 }
 
-//----------------------------------------Main Card----------------------------------------
+//----------------------------------------Main Card Right----------------------------------------
 
-changeMainCard = (data) => {
+changeMainCardDetails = (data) => {
     city.innerText = `${data.location.name}, ${data.location.country}`;
     highTemp.innerHTML = Math.round(data.forecast.forecastday[0].day.maxtemp_c) + "°C";
     lowTemp.innerHTML = Math.round(data.forecast.forecastday[0].day.mintemp_c) + "°C";
@@ -109,10 +112,10 @@ changeMainCard = (data) => {
     humidityContent.innerHTML = data.current.humidity + " %";
     atmPressure.innerHTML = data.current.pressure_mb + " mb";
     VisibleDistance.innerText = data.current.vis_km + " km";
-
-    updateClock(data);
-    currWeather(data);
 }
+
+//----------------------------------------Main Card Left----------------------------------------
+
 
 updateClock = (data) => {
     const cityTime = new Date(data.location.localtime); //Built in Date Object of JS
@@ -134,7 +137,7 @@ updateClock = (data) => {
     });
 }
 
-currWeather = (data) => {
+updateCurrWeather = (data) => {
     const currentHour = new Date(data.location.localtime).getHours();
     const hourlyData = data.forecast.forecastday[0].hour[currentHour];
     const hourlyTemp = hourlyData.temp_c;
@@ -142,9 +145,56 @@ currWeather = (data) => {
 
     currText.innerText = hourlyData.condition.text;
     feelsLike.innerText = `Feels like ${Math.round(data.current.feelslike_c)}`;
-    currentImg.src = "https:" + hourlyData.condition.icon;
-    currentImg.alt = hourlyData.condition.text;
 }
+
+function getWeatherIcon(code, isDay) {
+
+    if (weatherIcons.clear.includes(code)) {
+        return isDay ? "assets/icons/clear-day.svg" : "assets/icons/clear-night.svg";
+    }
+
+    if (weatherIcons.partlyCloudy.includes(code)) {
+        return isDay ? "assets/icons/partly-cloudy-day.svg" : "assets/icons/partly-cloudy-night.svg";
+    }
+
+    if (weatherIcons.cloudy.includes(code))
+        return "assets/icons/cloudy.svg";
+
+    if (weatherIcons.fog.includes(code))
+        return "assets/icons/fog.svg";
+
+    if (weatherIcons.drizzle.includes(code))
+        return "assets/icons/drizzle.svg";
+
+    if (weatherIcons.rain.includes(code))
+        return "assets/icons/rain.svg";
+
+    if (weatherIcons.heavyRain.includes(code))
+        return "assets/icons/heavy-rain.svg";
+
+    if (weatherIcons.snow.includes(code))
+        return "assets/icons/snow.svg";
+
+    if (weatherIcons.thunderstorm.includes(code))
+        return "assets/icons/thunderstorm.svg";
+
+    return "assets/icons/unknown.svg";
+}
+
+async function updateWeatherIcon(data) {
+    const code = data.current.condition.code;
+    const isDay = data.current.is_day;
+
+    const iconPath = getWeatherIcon(code, isDay);
+
+    const response = await fetch(iconPath);
+    const svg = await response.text();
+
+    weatherIconContainer.innerHTML = svg;
+}
+
+
+
 
 //-------------------------------------other-stats Stip------------------------------------
 
@@ -215,4 +265,30 @@ const aqiLevels = {
         color: "#7E0023",
         range: "301 - 500"
     }
+};
+
+
+const weatherIcons = {
+    clear: [1000],
+
+    partlyCloudy: [1003],
+
+    cloudy: [1006, 1009],
+
+    fog: [1030, 1135, 1147],
+
+    haze: [1036],
+
+    drizzle: [1072, 1150, 1153, 1168, 1171],
+
+    rain: [1063, 1180, 1183, 1186, 1189, 1192, 1195, 1240, 1243, 1246],
+
+    snow: [1066, 1114, 1117, 1210, 1213, 1216, 1219, 1222, 1225, 1255, 1258],
+
+    sleet: [1069, 1204, 1207, 1249, 1252],
+
+    hail: [1237, 1261, 1264],
+
+    thunder: [1087, 1273, 1276, 1279, 1282],
+
 };
