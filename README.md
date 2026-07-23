@@ -1,28 +1,25 @@
-# 🌦️ SkyCast - Modern Weather App
+# 🌤️ SkyCast - Weather at Your Glance
 
-A sleek and responsive weather application built using **HTML, CSS, and JavaScript**. SkyCast allows users to search for any city and view real-time weather information with a clean, modern UI inspired by popular weather applications.
+SkyCast is a modern, responsive weather application built using **HTML, CSS, and JavaScript**. It provides real-time weather information, a 7-day forecast, air quality data, sunrise/sunset timings, and a beautiful dark/light theme with animated weather icons.
 
 ---
 
 ## ✨ Features
 
-- 🔍 Search weather by city
-- 📍 Current location weather (optional)
-- 🌡️ Real-time temperature
-- 🤗 Feels Like temperature
-- ☁️ Weather condition with animated icons
-- 📇 Air Quality Index
-- 💨 Wind Speed
+- 🔍 Search weather by city name
+- 🌡️ Current temperature and weather conditions
+- 🕒 Live local date and time of the searched city
+- 📅 7-Day weather forecast
+- 🌅 Sunrise & Sunset timings
+- 💨 Wind speed
 - 💧 Humidity
-- 🌡️ Atmospheric Pressure
-- 👀 Visibility
-- 🌅 Sunrise & Sunset
+- 🌫️ Visibility
+- 📈 Atmospheric pressure
 - ☀️ UV Index
-- 🌙 Moon Phase
-- 📅 7-Day Weather Forecast
-- 🌗 Dark / Light Mode
-- 📱 Fully Responsive Design
-- ⚡ Fast and Lightweight
+- 🌍 Air Quality Index (AQI)
+- 🌙 Light/Dark theme toggle
+- 🎨 Animated SVG weather icons
+- 📱 Fully responsive design
 
 ---
 
@@ -31,133 +28,182 @@ A sleek and responsive weather application built using **HTML, CSS, and JavaScri
 - HTML5
 - CSS3
 - JavaScript (ES6)
-- Weather API
-- Font Awesome Icons
-- Google Fonts
+- WeatherAPI
+- Font Awesome
+- Meteocons
 
 ---
 
 ## 📂 Project Structure
 
 ```
-weather-app/
+SkyCast/
 │
+├── assets/
+│   ├── icons/
+│   ├── images/
+│   ├── screenshots/
+│
+├── app.js
+├── final.css
 ├── index.html
-├── style.css
-├── script.js
-│
-├── images/
-│   ├── logo.png
-│   ├── preview.png
-│   ├── cloudy.png
-│   ├── sunny.png
-│   ├── rain.png
-│   ├── storm.png
-│   └── background.jpg
-│
 └── README.md
 ```
 
 ---
 
+## ⚙️ API Used
+
+This project uses the **WeatherAPI Forecast API**.
+
+Website:
+
+https://www.weatherapi.com/
+
+Endpoint:
+
+```
+https://api.weatherapi.com/v1/forecast.json
+```
+
+Example Request
+
+```
+https://api.weatherapi.com/v1/forecast.json?key=YOUR_API_KEY&q=London&days=8&aqi=yes&alerts=no
+```
+
+---
+
+## 📊 Information Displayed
+
+### Current Weather
+
+- City
+- Country
+- Current Temperature
+- Weather Condition
+- Feels Like Temperature
+
+### Weather Details
+
+- Maximum Temperature
+- Minimum Temperature
+- Wind Speed
+- Humidity
+- Atmospheric Pressure
+- Visibility
+
+### Other Statistics
+
+- Sunrise
+- Sunset
+- UV Index
+- Air Quality Index
+
+### Forecast
+
+- Next 7 Days
+- Date
+- Day
+- Maximum Temperature
+- Minimum Temperature
+
+---
+
+## 🌈 Theme Support
+
+SkyCast supports both
+
+- 🌙 Dark Theme
+- ☀️ Light Theme
+
+The application switches themes instantly using CSS variables and JavaScript.
+
+---
+
+## 🎨 Weather Icons
+
+SkyCast uses custom animated SVG weather icons instead of the default WeatherAPI icons.
+
+Weather conditions are mapped using WeatherAPI condition codes.
+
+Examples:
+
+| Condition | Icon |
+|-----------|------|
+| Clear | ☀️ |
+| Partly Cloudy | 🌤️ |
+| Cloudy | ☁️ |
+| Rain | 🌧️ |
+| Drizzle | 🌦️ |
+| Snow | ❄️ |
+| Fog | 🌫️ |
+| Thunderstorm | ⛈️ |
+| Hail | 🧊 |
+| Sleet | 🌨️ |
+
+---
+
 ## 🚀 Getting Started
 
-### Clone the Repository
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Japnoor2407/weather-app.git
+git clone https://github.com/yourusername/skycast.git
 ```
 
-### Open the Project
+### 2. Open the project
 
-Simply open `index.html` in your browser.
+Simply open
 
-Or use VS Code Live Server.
-
----
-
-## 🌐 Weather Data
-
-This project uses a weather API to fetch live weather information.
-
-Example APIs:
-
-- OpenWeatherMap
-- WeatherAPI
-- Open-Meteo
-- Tomorrow.io
-
----
-
-## 📱 Screens
-
-- Home Dashboard
-- Search Weather
-- Current Weather
-- Weather Details
-- Weekly Forecast
-
----
-
-## 🎨 UI Highlights
-
-- Glassmorphism Cards
-- Smooth Hover Animations
-- Beautiful Hero Banner
-- Modern Navigation Bar
-- Responsive Grid Layout
-- Minimal Design
-- Rounded Components
-- Soft Shadows
-
----
-
-## 💡 Future Improvements
-
-- Hourly Forecast
-- Weather Alerts
-- Weather Map
-- Favorite Cities
-- Recent Searches
-- Voice Search
-- Multiple Language Support
-- Weather Charts
-- Animated Backgrounds
-- PWA Support
-- Offline Mode
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome!
-
-1. Fork the repository
-2. Create your feature branch
-
-```bash
-git checkout -b feature-name
+```
+index.html
 ```
 
-3. Commit your changes
-
-```bash
-git commit -m "Added new feature"
-```
-
-4. Push to GitHub
-
-```bash
-git push origin feature-name
-```
-
-5. Open a Pull Request
+in your browser.
 
 ---
 
-## ⭐ Show Your Support
+## 🔑 API Key
 
-If you like this project, consider giving it a ⭐ on GitHub!
+Replace the API key inside **app.js**
+
+```javascript
+const API_Key = "YOUR_API_KEY";
+```
+
+You can get a free API key from
+
+https://www.weatherapi.com/
+
+---
+
+## 📷 Screenshots
+
+### Dark Theme
+
+<p align="center">
+  <img src="/assets/screenshots/dark-theme.png" width="45%">
+</p>
+
+### Light Theme
+
+<p align="center">
+  <img src="/assets/screenshots/light-theme.png" width="45%">
+</p>
+
+---
+
+## 🔮 Future Improvements
+
+- 📍 Current Location Weather (Geolocation API)
+- 🌧️ Hourly Forecast
+- 📊 Weather Charts
+- ⭐ Favorite Cities
+- 🌎 Multiple Unit Support (°C / °F)
+- 🌦️ Weather Alerts
+- 🛰️ Radar Map
+- 🌍 Multi-language Support
 
 ---
 
@@ -165,8 +211,14 @@ If you like this project, consider giving it a ⭐ on GitHub!
 
 **Japnoor Singh**
 
-GitHub: https://github.com/Japnoor2407
+B.Tech Computer Science Engineering (AI & ML)
 
 ---
 
-### Made with ❤️ using HTML, CSS & JavaScript
+## ⭐ Support
+
+If you like this project,
+
+⭐ Star the repository
+
+and feel free to contribute!
